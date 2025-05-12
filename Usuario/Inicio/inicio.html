@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAICES FUSION - Iniciar Sesión / Registro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="inicio.css">
+  <link rel="icon" href="../imagenes/Raices.png" type="image/png">
+</head>
+
+<body>
+  <div class="container">
+    <div class="form-container">
+      <div class="left-section" id="carousel">
+        <div class="content-overlay">
+          <h1>RAICES <span>FUSION</span></h1>
+          <p>Únete a nuestra comunidad gastronómica.<br>Descubre los mejores sabores en tu área.</p>
+
+          <div class="button-container">
+            <button class="button x">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-twitter-x"
+                viewBox="0 0 24 24">
+                <path
+                  d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09997 22C7.78997 22.05 6.79997 20.68 5.95997 19.47C4.24997 17 2.93997 12.45 4.69997 9.39C5.56997 7.87 7.12997 6.91 8.81997 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
+              </svg>
+              Iniciar sesión con Apple
+            </button>
+
+            <script src="https://accounts.google.com/gsi/client" async defer></script>
+            <div id="g_id_onload"
+                 data-client_id="501787696327-uk8rtok14jokrpm2q960f0o9bpvms2iv.apps.googleusercontent.com"
+                 data-callback="handleCredentialResponse"
+                 data-auto_prompt="false">
+            </div>
+    
+            <div class="signin g_id_signin"
+                 data-type="standard"
+                 data-size="large"
+                 data-theme="outline"
+                 data-text="sign_in_with"
+                 data-shape="pill"
+                 data-logo_alignment="left">
+            </div>
+            <script>
+              function handleCredentialResponse(response) {
+                // Aquí se recibe el token de Google
+                console.log("ID Token:", response.credential);
+            
+                // Enviar el token a tu backend (login_google.php) para validarlo
+                fetch('Inicio/login_google.php', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                  },
+                  body: 'credential=' + encodeURIComponent(response.credential)
+                })
+                .then(response => response.json())
+                .then(data => {
+                  if (data.success) {
+                    // Redirigir o mostrar mensaje
+                    window.location.href = "Inicio/panel_usuario.php"; // Ejemplo
+                  } else {
+                    alert("Fallo en la autenticación con Google");
+                  }
+                })
+                .catch(error => {
+                  console.error("Error en autenticación:", error);
+                });
+              }
+            </script>
+            
+          </div>
+        </div>
+      </div>
+      <div class="right-section">
+        <div class="form-toggle">
+          <button id="loginTab" class="active" onclick="showLogin()">Iniciar Sesión</button>
+          <button id="registerTab" onclick="showRegister()">Regístrate</button>
+        </div>
+
+        <div id="loginForm" class="form-content active">
+          <h2>Iniciar Sesión</h2>
+          <form action="login.php" method="POST">
+            <input type="email" name="correo" placeholder="Correo Electrónico" required>
+            <input type="password" name="contrasena" placeholder="Contraseña" required>
+            <div class="options">
+              <label><input type="checkbox"> Recuérdame</label>
+              <a href="#">¿Olvidaste tu contraseña?</a>
+            </div>
+            <button type="submit" class="login-btn">
+              <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                  fill="currentColor"></path>
+              </svg>
+              <span>Iniciar Session</span>
+            </button>
+          </form>
+        </div>
+
+        <div id="registerForm" class="form-content hidden">
+          <h2>Regístrate</h2>
+          <form action="inicio.php" method="POST">
+            <input type="text" name="nombre" placeholder="Nombre y Apellido" required>
+            <input type="email" name="correo" placeholder="Correo Electrónico" required>
+            <input type="password" name="contrasena" placeholder="Contraseña" required>
+            <button type="submit" class="register-btn">
+              <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                  fill="currentColor"></path>
+              </svg>
+              <span>Registrarse</span>
+            </button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="inicio.js"></script>
+</body>
+
+</html>

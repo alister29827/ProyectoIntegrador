@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registra tu Negocio Gastronómico</title>
+    <link rel="stylesheet" href="registro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-utensils"></i> Registra tu Negocio Gastronómico</h1>
+            <p>Completa el formulario para listar tu restaurante, cafetería o bar en nuestro directorio</p>
+        </header>
+
+        <form id="businessForm" enctype="multipart/form-data">
+            <div class="form-progress">
+                <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="progressBar"></div>
+                </div>
+                <div class="progress-percentage" id="progressPercentage">25%</div>
+              </div>
+              
+            <div class="form-step active" data-step="1">
+                <h2>Información Básica del Negocio</h2>
+                
+                <div class="form-group">
+                    <label for="businessName">Nombre del Negocio*</label>
+                    <input type="text" id="businessName" name="businessName" required>
+                    <div class="hint">Ej: La Casa del Sabor</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessType">Tipo de Negocio*</label>
+                    <select id="businessType" name="businessType" required>
+                        <option value="">Seleccione...</option>
+                        <option value="restaurant">Restaurante</option>
+                        <option value="cafe">Cafetería</option>
+                        <option value="bar">Bar</option>
+                        <option value="other">Otro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessDescription">Descripción*</label>
+                    <textarea id="businessDescription" name="businessDescription" rows="4" required></textarea>
+                    <div class="hint">Describe tu negocio en 50-200 palabras</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="openingDate">Fecha de Apertura*</label>
+                    <input type="date" id="openingDate" name="openingDate" required>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-next">Siguiente <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <div class="form-step" data-step="2">
+                <h2>Ubicación y Contacto</h2>
+                
+                <div class="form-group">
+                    <label for="businessAddress">Dirección Exacta*</label>
+                    <input type="text" id="businessAddress" name="businessAddress" required>
+                    <button type="button" id="locateMe" class="btn-small"><i class="fas fa-map-marker-alt"></i> Usar mi ubicación</button>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessDistrict">Distrito*</label>
+                    <input type="text" id="businessDistrict" name="businessDistrict" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessCity">Ciudad*</label>
+                    <input type="text" id="businessCity" name="businessCity" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessPhone">Teléfono Principal*</label>
+                    <input type="tel" id="businessPhone" name="businessPhone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessEmail">Correo Electrónico*</label>
+                    <input type="email" id="businessEmail" name="businessEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessWebsite">Sitio Web (opcional)</label>
+                    <input type="url" id="businessWebsite" name="businessWebsite">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-prev"><i class="fas fa-arrow-left"></i> Anterior</button>
+                    <button type="button" class="btn-next">Siguiente <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <div class="form-step" data-step="3">
+                <h2>Documentación Legal</h2>
+                <p class="warning-text"><i class="fas fa-exclamation-triangle"></i> Todos los documentos serán verificados para garantizar la autenticidad de tu negocio.</p>
+                
+                <div class="form-group">
+                    <label for="businessRUC">RUC*</label>
+                    <input type="text" id="businessRUC" name="businessRUC" required>
+                    <button type="button" id="verifyRUC" class="btn-small">Verificar RUC</button>
+                    <div id="rucStatus" class="status-message"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessPermit">Permiso de Funcionamiento*</label>
+                    <input type="file" id="businessPermit" name="businessPermit" accept=".pdf,.jpg,.png" required>
+                    <div class="hint">Sube una imagen o PDF de tu permiso vigente</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessID">Documento de Identidad del Representante*</label>
+                    <input type="file" id="businessID" name="businessID" accept=".pdf,.jpg,.png" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="additionalDocs">Documentos Adicionales (opcional)</label>
+                    <input type="file" id="additionalDocs" name="additionalDocs" multiple>
+                    <div class="hint">Puedes subir menús, certificados de salubridad, etc.</div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-prev"><i class="fas fa-arrow-left"></i> Anterior</button>
+                    <button type="button" class="btn-next">Siguiente <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <div class="form-step" data-step="4">
+                <h2>Imágenes y Finalización</h2>
+                
+                <div class="form-group">
+                    <label for="businessLogo">Logo del Negocio*</label>
+                    <input type="file" id="businessLogo" name="businessLogo" accept="image/*" required>
+                    <div class="hint">Recomendado: 500x500px, formato PNG</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessPhotos">Fotos del Establecimiento* (Mínimo 3)</label>
+                    <input type="file" id="businessPhotos" name="businessPhotos" multiple required>
+                    <div class="hint">Selecciona entre 3 y 10 fotos de tu local</div>
+                    <div id="photoPreview" class="photo-preview"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessHours">Horario de Atención*</label>
+                    <div class="hours-container">
+                        <div class="day-hour">
+                            <span>Lunes:</span>
+                            <input type="time" name="mondayOpen"> a <input type="time" name="mondayClose">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="termsAgreement" name="termsAgreement" required>
+                    <label for="termsAgreement">Acepto los términos y condiciones y confirmo que toda la información proporcionada es verídica.*</label>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-prev"><i class="fas fa-arrow-left"></i> Anterior</button>
+                    <button type="submit" class="btn-submit">Enviar Registro <i class="fas fa-check"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="verificationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-check-circle"></i> Verificación Requerida</h2>
+            <p>Hemos enviado un código de verificación al correo electrónico registrado. Por favor ingrésalo a continuación:</p>
+            <input type="text" id="verificationCode" placeholder="Código de 6 dígitos">
+            <button id="confirmVerification" class="btn-submit">Verificar</button>
+            <p id="verificationMessage" class="status-message"></p>
+        </div>
+    </div>
+
+    <script src="formulario.js"></script>
+    <script src="restaurante.js"></script>
+</body>
+</html>

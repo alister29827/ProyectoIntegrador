@@ -1,0 +1,215 @@
+/* NAVBAR ESTILOS */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 35px;
+    background-color: #000; /* Color sólido o como gustes */
+    position: relative; /* Ya no se queda pegado */
+    z-index: 1;
+    transition: 0.3s ease all;
+  }
+  
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .navbar-logo img {
+    height: 48px;
+    border-radius: 10px;
+  }
+  
+  .navbar-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  .ai-highlight {
+    color: #00d8ff;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  
+  .navbar-links li a {
+    color: #eee;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #ffd700;
+    bottom: -5px;
+    left: 0;
+    transition: 0.3s;
+  }
+  
+  .navbar-links li a:hover::after,
+  .navbar-links li a.active::after {
+    width: 100%;
+  }
+  
+  .navbar-links li a:hover,
+  .navbar-links li a.active {
+    color: #ffd700;
+  }
+  
+/* Fondo y estructura general */
+.registro-container {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  
+  /* Tarjeta del formulario */
+  .registro-card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    text-align: left;
+    position: relative;
+  }
+  
+  /* Título y subtítulo */
+  .registro-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #222;
+    text-align: center;
+  }
+  
+  .registro-subtitulo {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  
+  /* Campos del formulario */
+  .campo {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .campo label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+  }
+  
+  .campo input,
+  .campo select,
+  .campo textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 15px;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  .campo textarea {
+    resize: vertical;
+  }
+  
+  .campo input:focus,
+  .campo select:focus,
+  .campo textarea:focus {
+    border-color: #38f9d7;
+    outline: none;
+    box-shadow: 0 0 6px rgba(56, 249, 215, 0.4);
+  }
+  
+  /* Checkbox */
+  .checkbox-group {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 14px;
+    color: #444;
+    margin-top: 10px;
+  }
+  
+  /* Horario */
+  .day-hour {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  /* Botones */
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .btn-next,
+  .btn-submit {
+    background: linear-gradient(to right, #43e97b, #38f9d7);
+    color: #fff;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-next:hover,
+  .btn-submit:hover {
+    background: linear-gradient(to right, #38f9d7, #43e97b);
+  }
+  
+  /* Barra de progreso */
+  .progress-bar-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6px;
+    width: 100%;
+    background: #e0e0e0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(to right, #00c9ff, #92fe9d);
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+  .error {
+    color: red;
+    font-size: 13px;
+    margin-top: 5px;
+    display: block;
+  }
+  

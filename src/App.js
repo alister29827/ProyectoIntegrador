@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import Navbar, { Beneficios, HeroSection, Datos } from './components/navbar/Navbar';
+import FormularioNegocio from './components/formulario/FormularioNegocio';
+import AuthPage from './views/AuthPage';
 
-function App() {
+function AppWrapper({ isAuthenticated, onLogin }) {
+  const location = useLocation();
+  const isFormulario = location.pathname === '/registro-negocio';
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {!isFormulario && isAuthenticated && <Navbar />}
+      <Routes>
+        <Route
+          path="/login"
+          element={
+            isAuthenticated ? (
+              <Navigate to="/" replace />
+            ) : (
+              <AuthPage onLogin={onLogin} />
+            )
+          }
+        />
+
+        <Route
+          path="/"
+          element={
+            isAuthenticated ? (
+              <>
+                <HeroSection />
+                <Beneficios />
+                <Datos />
+              </>
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+
+        <Route path="/registro-negocio" element={<FormularioNegocio />} />
+      </Routes>
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+  };
+
+  return (
+    <Router>
+      <AppWrapper isAuthenticated={isAuthenticated} onLogin={handleLogin} />
+    </Router>
+  );
+}

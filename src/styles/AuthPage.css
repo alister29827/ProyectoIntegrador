@@ -1,0 +1,117 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('../assets/piura.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  display: flex;
+  width: 800px; /* Reducir el ancho del cuadro */
+  height: 500px; /* Reducir la altura del cuadro */
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.left-section {
+  width: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 30px; /* Ajustar el padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-section h1 {
+  font-size: 2.5rem;
+}
+
+.left-section span {
+  color: #FFD700;
+}
+
+.left-section p {
+  margin: 20px 0;
+  font-size: 1.1rem;
+}
+
+.right-section {
+  width: 50%;
+  background: white;
+  padding: 30px; /* Ajustar el padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-toggle {
+  display: flex;
+  justify-content: start;
+  gap: 1.5rem; /* Reducir el espacio entre botones */
+  margin-bottom: 15px; /* Reducir el margen inferior */
+}
+
+.form-toggle button {
+  border: none;
+  background: none;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.form-toggle .active {
+  border-bottom: 2px solid #FF5A5F;
+  color: #FF5A5F;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Reducir el espacio entre los campos */
+}
+
+input {
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  padding: 8px; /* Reducir el padding */
+}
+
+.login-btn {
+  background: linear-gradient(to right, #8cd5f1, #7bdaba, #8cd5f1);
+  color: white;
+  padding: 10px; /* Reducir el padding */
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+/* Fondo personalizado para login */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  border-radius: 10px;
+  color: white;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
